@@ -81,8 +81,6 @@ public class PlayingActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     // Return to previous activity
@@ -99,7 +97,7 @@ public class PlayingActivity extends AppCompatActivity {
         albumNameTextView.setText(currentSong.getSongAlbumName());
 
         // Use below line if you want song title in Action Bar
-//        getSupportActionBar().setTitle(currentSong.getSongName());
+        getSupportActionBar().setTitle(currentSong.getSongName());
 
         if (currentSong.hasImage()) {
             songImageView.setImageResource(currentSong.getImageResourceId());
@@ -107,6 +105,5 @@ public class PlayingActivity extends AppCompatActivity {
         } else {
             songImageView.setVisibility(View.INVISIBLE);
         }
-
     }
 }

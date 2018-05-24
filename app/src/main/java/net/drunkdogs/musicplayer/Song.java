@@ -35,6 +35,5 @@ public class Song {
                 "mSongName=" + mSongName +
                 ", mSongAlbum=" + mSongAlbumName +
                 ", mImageResourceId=" + mImageResourceId + "}";
-
     }
 }

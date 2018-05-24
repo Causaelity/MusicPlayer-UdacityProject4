@@ -20,6 +20,7 @@ public class SongBank {
         // No image intentionally supplied
         songs.add(new Song("Hells Bells", "Back in Black"));
 
+        // Other songs with images
         songs.add(new Song("Fructus Gravis", "The DaVinci Code", R.drawable.davinci_album));
         songs.add(new Song("Look to the Stars", "Man of Steel", R.drawable.manofsteel_album));
         songs.add(new Song("Oil Rig", "Man of Steel", R.drawable.manofsteel_album));
@@ -29,5 +30,4 @@ public class SongBank {
         songs.add(new Song("Reading is Fundamental", "Doctor Strange", R.drawable.drstrange_album));
 
     }
-
 }
