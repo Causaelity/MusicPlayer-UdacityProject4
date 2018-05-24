@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MusicPlayer</string>
+    <string name="songSort">Song Sort</string>
+    <string name="albumSort">Album Sort</string>
+    <string name="original">Original</string>
+    <string name="play">Play</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="pause">Pause</string>
+    <string name="endOfListMessage">No more songs to play</string>
+    <string name="startOfListMessage">You are at the beginning of the list</string>
 </resources>

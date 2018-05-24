@@ -23,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Setup and initialize song list
         new SongBank();
 
+        // Create adapter to use with array list
         final SongAdapter adapter = new SongAdapter(this, SongBank.songs);
 
         ListView listView = findViewById(R.id.songListView);
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // Launch this song with new intent
+                // Launch this song to a detail view
                 Intent intent = new Intent(MainActivity.this, PlayingActivity.class);
                 intent.putExtra("position", position);
                 startActivity(intent);
@@ -44,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Add Sorting if you want to later
+        // Song Sorting for Songs and Albums
+        // Clicking a second time will reverse the sort
         TextView songSort = findViewById(R.id.songSortTextView);
         songSort.setOnClickListener(new View.OnClickListener() {
             @Override

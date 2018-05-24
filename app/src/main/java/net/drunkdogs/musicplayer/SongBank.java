@@ -16,6 +16,10 @@ public class SongBank {
         songs.add(new Song("Imagine the Fire", "Music from the Batman Trilogy", R.drawable.batman_album));
         songs.add(new Song("Dies Mercurii I Martius", "The DaVinci Code", R.drawable.davinci_album));
         songs.add(new Song("L'Espirit des Gabriel", "The DaVinci Code", R.drawable.davinci_album));
+
+        // No image intentionally supplied
+        songs.add(new Song("Hells Bells", "Back in Black"));
+
         songs.add(new Song("Fructus Gravis", "The DaVinci Code", R.drawable.davinci_album));
         songs.add(new Song("Look to the Stars", "Man of Steel", R.drawable.manofsteel_album));
         songs.add(new Song("Oil Rig", "Man of Steel", R.drawable.manofsteel_album));

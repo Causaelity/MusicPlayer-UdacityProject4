@@ -27,24 +27,27 @@ public class SongAdapter extends ArrayAdapter<Song> {
             listSongView = LayoutInflater.from(getContext()).inflate(R.layout.song_item, parent, false);
         }
 
+        // Get current song
         Song currentSong = getItem(position);
 
+        // Update song name
         TextView songNameTextView = listSongView.findViewById(R.id.songNameTextView);
         songNameTextView.setText(currentSong.getSongName());
 
+        // Update album name
         TextView albumNameTextView = listSongView.findViewById(R.id.albumNameTextView);
         albumNameTextView.setText(currentSong.getSongAlbumName());
 
-
+        // Update image
         ImageView songImageView = listSongView.findViewById(R.id.songImage);
 
+        // If song has an associated image use it, otherwise remove space
         if (currentSong.hasImage()) {
             songImageView.setImageResource(currentSong.getImageResourceId());
             songImageView.setVisibility(View.VISIBLE);
         } else {
             songImageView.setVisibility(View.GONE);
         }
-
 
         return listSongView;
     }
