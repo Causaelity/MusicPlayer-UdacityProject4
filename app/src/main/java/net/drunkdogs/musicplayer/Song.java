@@ -1,6 +1,9 @@
 package net.drunkdogs.musicplayer;
 
-public class Song {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Song implements Parcelable {
 
     private String mSongName;
 
@@ -36,4 +39,40 @@ public class Song {
                 ", mSongAlbum=" + mSongAlbumName +
                 ", mImageResourceId=" + mImageResourceId + "}";
     }
+
+    /**
+     * Parcelable Code
+     */
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mSongName);
+        dest.writeString(mSongAlbumName);
+        dest.writeInt(mImageResourceId);
+    }
+
+    private Song(Parcel in) {
+        mSongName = in.readString();
+        mSongAlbumName = in.readString();
+        mImageResourceId = in.readInt();
+    }
+
+    // Method to recreate a Song from a Parcel
+    public static Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel source) {
+            return new Song(source);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
+
 }

@@ -9,15 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class PlayingActivity extends AppCompatActivity {
 
     int position;
-    int totalSongs = SongBank.songs.size();
+    int totalSongs;
 
     Song currentSong;
     TextView songNameTextView;
     TextView albumNameTextView;
     ImageView songImageView;
+    ArrayList<Song> songs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class PlayingActivity extends AppCompatActivity {
         // Get array position ID passed from previous Intent
         Intent currentIntent = getIntent();
         position = currentIntent.getIntExtra("position", 0);
+        songs = currentIntent.getParcelableArrayListExtra("allSongs");
 
         // Setup views
         songImageView = findViewById(R.id.imageView);
@@ -92,7 +96,7 @@ public class PlayingActivity extends AppCompatActivity {
 
     // Set up view with song details
     void setupSong(int position) {
-        currentSong = SongBank.songs.get(position);
+        currentSong = songs.get(position);
         songNameTextView.setText(currentSong.getSongName());
         albumNameTextView.setText(currentSong.getSongAlbumName());
 

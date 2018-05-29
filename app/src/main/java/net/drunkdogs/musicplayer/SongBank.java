@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 public class SongBank {
 
-    static ArrayList<Song> songs = new ArrayList<>();
-
-    SongBank() {
+    public static ArrayList<Song> getAllSongs() {
+        ArrayList<Song> songs = new ArrayList<>();
 
         songs.add(new Song("Dancing Queen", "Gold: Greatest Hits", R.drawable.abba_album));
         songs.add(new Song("Super Trouper", "Gold: Greatest Hits", R.drawable.abba_album));
@@ -29,5 +28,6 @@ public class SongBank {
         songs.add(new Song("Go for Baroque", "Doctor Strange", R.drawable.drstrange_album));
         songs.add(new Song("Reading is Fundamental", "Doctor Strange", R.drawable.drstrange_album));
 
+        return songs;
     }
 }

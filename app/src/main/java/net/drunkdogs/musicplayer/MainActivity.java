@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean songAscending = true;
     boolean albumAscending = true;
+    ArrayList<Song> songs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Setup and initialize song list
-        new SongBank();
+         songs = SongBank.getAllSongs();
 
         // Create adapter to use with array list
-        final SongAdapter adapter = new SongAdapter(this, SongBank.songs);
+        final SongAdapter adapter = new SongAdapter(this, songs);
 
         ListView listView = findViewById(R.id.songListView);
 
@@ -41,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 // Launch this song to a detail view
                 Intent intent = new Intent(MainActivity.this, PlayingActivity.class);
                 intent.putExtra("position", position);
+
+                // parceled song class in an array
+                intent.putParcelableArrayListExtra("allSongs", songs);
+
                 startActivity(intent);
 
             }
@@ -54,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Do some sorting
                 if (songAscending) {
-                    Collections.sort(SongBank.songs, new Comparator<Song>() {
+                    Collections.sort(songs, new Comparator<Song>() {
                         @Override
                         public int compare(Song o1, Song o2) {
                             return o1.getSongName().compareTo(o2.getSongName());
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                     songAscending = false;
                 } else {
-                    Collections.sort(SongBank.songs, new Comparator<Song>() {
+                    Collections.sort(songs, new Comparator<Song>() {
                         @Override
                         public int compare(Song o1, Song o2) {
                             return o2.getSongName().compareTo(o1.getSongName());
@@ -82,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Do some sorting
                 if (albumAscending) {
-                    Collections.sort(SongBank.songs, new Comparator<Song>() {
+                    Collections.sort(songs, new Comparator<Song>() {
                         @Override
                         public int compare(Song o1, Song o2) {
                             return o1.getSongAlbumName().compareTo(o2.getSongAlbumName());
@@ -90,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                     albumAscending = false;
                 } else {
-                    Collections.sort(SongBank.songs, new Comparator<Song>() {
+                    Collections.sort(songs, new Comparator<Song>() {
                         @Override
                         public int compare(Song o1, Song o2) {
                             return o2.getSongAlbumName().compareTo(o1.getSongAlbumName());
@@ -108,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
         originalSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SongBank.songs.clear();
-                new SongBank();
+                songs.clear();
+                songs = SongBank.getAllSongs();
 
                 adapter.notifyDataSetChanged();
             }
