@@ -34,6 +34,7 @@ public class PlayingActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         position = currentIntent.getIntExtra("position", 0);
         songs = currentIntent.getParcelableArrayListExtra("allSongs");
+        totalSongs = songs.size();
 
         // Setup views
         songImageView = findViewById(R.id.imageView);
